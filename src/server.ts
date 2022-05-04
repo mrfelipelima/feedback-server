@@ -1,5 +1,7 @@
-const teste = 1;
+import express from "express";
 
-async function asdf() {
-    return 'ok'
-}
+const app = express();
+
+app.listen(3333, () => {
+  console.log("Server started");
+});
