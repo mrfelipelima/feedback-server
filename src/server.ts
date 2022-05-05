@@ -11,8 +11,8 @@ const transport = nodemailer.createTransport({
   host: "smtp.mailtrap.io",
   port: 2525,
   auth: {
-    user: "c8061e499a991e",
-    pass: "95a4ebf856f474",
+    user: process.env.MAILTRAP_USER,
+    pass: process.env.MAILTRAP_PASSWORD,
   },
 });
 
@@ -33,6 +33,7 @@ app.post("/feedbacks", async (req, res) => {
     subject: "Novo feedback",
     html: [
       `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
+      `<p>Id: ${feedback.id}</p>`,
       `<p>Tipo do feedback: ${type}</p>`,
       `<p>Comentário: ${comment}</p>`,
       `</div>`,
